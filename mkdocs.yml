@@ -3,8 +3,8 @@ site_url: https://sap.equinor.com/
 
 # Repository, edit to point to appropriate repo
 # repo_name: 'equinor/btp-docs'
-# repo_url:  'https://github.com/equinor/btp-docs'
-# edit_uri:  'edit/master/docs/'
+# repo_url:  'https://github.com/equinor/Nexus-ERP-Cross-Testing'
+#edit_uri:  'edit/master/docs/'
 
 # Copyright, do not edit
 copyright: 'Copyright &copy; 2022 Equinor'
@@ -71,7 +71,10 @@ markdown_extensions:
 
 nav:
 
-  - Home: index.md
+  site_name: Quality Assurance
+nav:
+  - Home:
+      - Introduction: index.md  
   - Manual Testing:
       - Getting started: qa/manual/getting-started.md
       - Guidelines: qa/manual/guidelines.md
@@ -84,3 +87,9 @@ nav:
   - Projects:
       - Projects: qa/projects/project-overview.md
       - NextGen ERP: qa/projects/nextgen.md
+      - NextGen OMM-LOG: qa/projects/nextgenommlog.md
+      - NextGen PO Solutions: qa/projects/nextgenposolutions.md
+      - Establish & Manage Agreements: qa/projects/establishmanageagreements
+      - REN ERP Strategy: qa/projects/renerpstrategy.md
+      - Other projects: qa/projects/otherprojects.md
+      - NextGen ERP: qa/projects/nexterp.md

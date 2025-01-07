@@ -40,11 +40,11 @@ We then open `Requirements` tab to start a new test case. In this page it is wor
 2. test cases already linked to the selected requirement
 3. area to create a new test case
 
-![qtest guideline - requirements](./images/qtest-guideline-requirements.png)
+![qtest guideline - requirements](images/qtest-guideline-requirements.png)
 
 Once the new test case is created it is added to the test cases area. 
 
-![qtest guideline - requirement added](./images/qtest-guideline-requirement-added.png)
+![qtest guideline - requirement added](images/qtest-guideline-requirement-added.png)
 
 By clicking on the new test case you are transferred to the `Test Design` tab. This is where we write a test case. It has two main parts:
 
@@ -68,7 +68,7 @@ By clicking on the new test case you are transferred to the `Test Design` tab. T
 
 Other tabs besides Test Steps include Requirements, Sessions, Attachments, History and Comments.
 
-![qtest guideline - test design](./images/qtest-guideline-test-design.png)
+![qtest guideline - test design](images/qtest-guideline-test-design.png)
 
 When working on a test case, a test case developer should:
 - set `Assigned To` to himself;
@@ -83,7 +83,7 @@ When working on a test case, a test case developer should:
 
 The `Version` is automatically updated with one number after the decimal up. IF the quality SME approves the test case the `Version` is rounded up to the next full number (e.g. if `Version` is 0.3 and the quality SME approves it, `Version` becomes 1.0). Also the icon for the test case now has one green check, indicating that its last status is approved.
 
-![qtest guideline - approved test case](./images/qtest-guideline-approved-test-case.png)
+![qtest guideline - approved test case](images/qtest-guideline-approved-test-case.png)
 
 ## Creating a Test Case from a Session
 

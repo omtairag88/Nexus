@@ -3,14 +3,13 @@ search:
   exclude: true
 ---
 <style>
-/* Tu estilo y contenido aquí */
+
 </style>
 
 <div class="banner">
-  <h1>Home</h1>
+  <h1>Welcome to my site</h1>
   <p>We are moving to <a href="https://sapdev.equinor.com">https://sapdev.equinor.com</a> - please update your bookmark!</p>
-
-
+</div>
 # Quality Assurance Guidelines
 
 Welcome to the Quality Assurance Guidelines site for QA in SAP and BTP development at Equinor! Here you will find comprehensive resources to support your testing efforts, divided into two key areas: manual testing with qTest and automation with Tricentis Tosca. Our guidelines are designed to ensure high-quality software delivery by providing you with a structured approach and best practices for testing.
@@ -21,7 +20,7 @@ To get started, we have outlined step-by-step instructions in the "Getting Start
 
 In the manual testing section, we focus on utilizing qTest, a powerful testing management platform. 
 
-<center>  **[Get started with manual testing](./manual/getting-started.md){ .md-button }**  </center>
+<center>  **[Go to Started with manual testing   :fontawesome-solid-paper-plane:](./qa/manual/getting-started.md){ .md-button }**  </center>
 
 Our [guidelines](./manual/guidelines.md) will walk you through various aspects, such as test case creation, execution, and reporting. Additionally, we have integrated the requirements in qTest with Equinor's existing Business Process Hierarchy (BPH) system, which is currently managed in Jira. This integration ensures traceability and alignment between the testing efforts and the defined business processes.
 
@@ -29,7 +28,7 @@ Our [guidelines](./manual/guidelines.md) will walk you through various aspects, 
 
 For automation enthusiasts, we offer comprehensive guidelines and best practices for Tricentis Tosca. 
 
-<center>  **[Get started with automatic testing](./automation/getting-started.md){ .md-button }**  </center>
+<center>  **[Go Started with automatic testing   :fontawesome-solid-paper-plane:](./qa/automation/getting-started.md){ .md-button }**  </center>
 
 Automation plays a crucial role in streamlining testing processes, increasing efficiency, and reducing time-to-market. Our [guidelines](./automation/guidelines.md) will help you create robust automation scripts, execute them effectively, and analyze the results. You'll also learn how to maintain and update your automation assets to keep pace with the evolving software landscape.
 
@@ -43,12 +42,7 @@ We understand that questions may arise during your testing journey, and our test
 
 We hope this Quality Assurance Guidelines site serves as a valuable resource for your SAP and BTP development testing needs. Let's work together to deliver high-quality software solutions that meet Equinor's standards and exceed user expectations. 
 
-**Happy testing!**
-
-
-
-
-</div>	
+**Happy testing!**	
 <div class="md-container secondary-section">
-    <!-- Resto de contenido -->
+    
 </div>

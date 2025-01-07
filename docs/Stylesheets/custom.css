@@ -51,3 +51,5 @@
 /* Make admonitions same font size as other text */
 .md-typeset .admonition, .md-typeset details {
     font-size: 0.8rem;
+    
+}

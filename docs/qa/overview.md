@@ -8,7 +8,7 @@ To get started, we have outlined step-by-step instructions in the "Getting Start
 
 In the manual testing section, we focus on utilizing qTest, a powerful testing management platform. 
 
-<center>  **[Get started with manual testing](./manual/getting-started.md){ .md-button }**  </center>
+**[Go to qTest   :fontawesome-solid-paper-plane:](https://equinor.qtestnet.com){ .md-button }**
 
 Our [guidelines](./manual/guidelines.md) will walk you through various aspects, such as test case creation, execution, and reporting. Additionally, we have integrated the requirements in qTest with Equinor's existing Business Process Hierarchy (BPH) system, which is currently managed in Jira. This integration ensures traceability and alignment between the testing efforts and the defined business processes.
 
