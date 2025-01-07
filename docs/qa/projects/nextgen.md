@@ -2,6 +2,14 @@
 
 This is a temporery site for NextGen ERP QA and Test reletaed topcis. 
 
+## Links 
+<href>
+
+https://eqn-nextgen.atlassian.net/jira/software/c/projects/NGE/boards/71
+https://equinor.qtestnet.com/p/120469/portal/project#id=5266323&object=4&tab=testexecution
+
+Main contact person: Mattis Eine Furuset
+
 ## Test Strategy: 
 
 <center>

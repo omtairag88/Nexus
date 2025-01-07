@@ -71,8 +71,7 @@ markdown_extensions:
 
 nav:
 
-  - Quality Assurance:
-      - Introduction: qa/overview.md
+  - Home: index.md
   - Manual Testing:
       - Getting started: qa/manual/getting-started.md
       - Guidelines: qa/manual/guidelines.md
