@@ -1,0 +1,1330 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://sap.equinor.com/qa/automation/tosca-best-practices/">
+      
+      
+        <link rel="prev" href="../guidelines/">
+      
+      
+        <link rel="next" href="../../projects/project-overview/">
+      
+      
+      <link rel="icon" href="../../../stylesheets/Equinor_Symbol_Favicon_RED_32x32px.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Best practices - Quality Assurace</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tricentis-tosca-commander-best-practices" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Quality Assurace" class="md-header__button md-logo" aria-label="Quality Assurace" data-md-component="logo">
+      
+  <img src="../../../stylesheets/Equinor_Symbol_Favicon_RED_64x64px.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Quality Assurace
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Best practices
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/equinor/btp-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    equinor/btp-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../overview/" class="md-tabs__link">
+          
+  
+  Quality Assurance
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../manual/getting-started/" class="md-tabs__link">
+          
+  
+  Manual Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../getting-started/" class="md-tabs__link">
+          
+  
+  Test Automation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projects/project-overview/" class="md-tabs__link">
+          
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Quality Assurace" class="md-nav__button md-logo" aria-label="Quality Assurace" data-md-component="logo">
+      
+  <img src="../../../stylesheets/Equinor_Symbol_Favicon_RED_64x64px.png" alt="logo">
+
+    </a>
+    Quality Assurace
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/equinor/btp-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    equinor/btp-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Quality Assurance
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Quality Assurance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Manual Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Manual Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/guidelines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guidelines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/qtest-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/qtest-training-session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    qTest Training Session Video
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Test Automation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Test Automation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guidelines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guidelines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Best practices
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Best practices
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creation-of-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creation of Modules
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creation of Modules">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-modules-for-sections-of-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create modules for sections of pages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-duplicate-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avoid duplicate Modules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rename-modules-appropriately-after-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rename Modules appropriately after creation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-more-than-one-moduleattribute-to-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add more than one ModuleAttribute to Modules
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-using-index-for-moduleattribute-identifcation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avoid using Index for ModuleAttribute identifcation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-using-image-based-identification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avoid using image-based identification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#combine-module-attributes-in-control-groups-if-possible" class="md-nav__link">
+    <span class="md-ellipsis">
+      Combine Module Attributes in control groups, if possible
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name-moduleattributes-appropriately" class="md-nav__link">
+    <span class="md-ellipsis">
+      Name ModuleAttributes appropriately
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#make-use-of-cardinality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Make use of cardinality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-standard-modules-wherever-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use standard modules wherever required
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use parameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#structuring-test-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structuring Test Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Structuring Test Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-case-folder-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Case Folder Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-case-verification-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Case Verification Points
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-case-workstates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Case Workstates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synchronization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-keyboard-and-mouse-emulsion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Avoid keyboard and mouse emulsion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-case-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test case names
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#make-use-of-recovery-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Make use of recovery scenarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implement-clean-up-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implement clean-up scenarios
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recovery-scenario-retry-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recovery Scenario Retry Level
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-test-step-blocks-based-on-reusability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Test Step Blocks Based on Reusability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-configuration-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Configuration Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execution-lists-logs-and-scratch-book" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execution Lists -Logs and scratch Book
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-user-workspaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-User Workspaces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-User Workspaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#separate-login-credentials-for-each-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Separate Login Credentials for Each User
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#separate-regular-users-and-administrators-in-a-common-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Separate regular users and administrators in a common repository
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-a-buffer-only-within-one-test-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use a buffer only within one test case
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#store-shared-settings-in-the-project-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Store shared settings in the project settings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#useful-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Useful Links
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/project-overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/nextgen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NextGen ERP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/equinor/btp-docs/edit/master/docs/qa/automation/tosca-best-practices.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="tricentis-tosca-commander-best-practices">Tricentis Tosca Commander Best Practices</h1>
+<p>This guideline will be gradually built as we advance on the use of tools. For suggestions and improvements please contact acbr@equinor.com.</p>
+<h2 id="creation-of-modules">Creation of Modules</h2>
+<h3 id="create-modules-for-sections-of-pages">Create modules for sections of pages</h3>
+<p>A Module is created for each functional unit of the object to be tested. These functional units can be, for instance, whole websites in a browser (what can be seen on one screen), or only specific parts of the screen. If the whole UI has a high number of elements, the Attributes should be split into different Modules, e.g. one for the title bar, navigation tree and content section. If the whole screen only includes a smaller number of elements, the whole page can also be used as a Module. </p>
+<p><img alt="naming modules 0" src="../images/naming-modules-req0.png" /></p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>modules with a low number of Attributes are easier to read and to maintain</li>
+<li>By creating modules for a part of an application that is reused on multiple pages (for intance a menu bar), you must only create one Module for this which you can reuse.</li>
+</ul>
+<h3 id="avoid-duplicate-modules">Avoid duplicate Modules</h3>
+<p>Field on a screen should be covered only once in a Module. Duplicate Modules (representing the same control) should be avoided. Additionally, a control should only appear in one Module as a ModuleAttribute. If you have any duplicate modules you can search with the help of Find duplicate modules option from menu section and merge it by selecting the controls.</p>
+<p><img alt="naming modules 2" src="../images/naming-modules-req2.png" /></p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Duplicate Modules lead to additional maintenance effort. By only having every element once, you can reduce that effort significantly.</li>
+</ul>
+<h3 id="rename-modules-appropriately-after-creation">Rename Modules appropriately after creation</h3>
+<p>When you create a Module with Tbox XScan, the Module name is created automatically using the window caption. This will not always reflect the true purpose of the Module. You must rename the module. When naming the Module, include the application and section name. This simplifies identifying the Module when using “fuzzy” search.</p>
+<p>Use as: <code>*\&lt;T-code\&gt;* | *\&lt;Screen-name\&gt;* | *\&lt;Tab-name\&gt;* | *\&lt;Screen description\&gt;*</code></p>
+<p><img alt="naming modules 3" src="../images/naming-modules-req3.png" /></p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>giving Modules a proper name makes it easier to find them.</li>
+<li>it is also done for the sake of maintaining clarity and identification, particularly for all other testers and experts working on the project.</li>
+</ul>
+<h3 id="add-more-than-one-moduleattribute-to-modules">Add more than one ModuleAttribute to Modules</h3>
+<p>When you have Modules that contain all the ModuleAttributes of a section of the screen, you can create more readable and maintainable test cases. If you create Modules with only one ModuleAttribute, many Modules will be needed to steer your SUT. This increases the number of TestSteps and make test cases difficult to read.</p>
+<p><img alt="naming modules 4" src="../images/naming-modules-req4.png" /></p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>more ModuleAttributes within one Module reduces the number of Modules and TestSteps</li>
+<li>makes your portfolio and your TestCases easily readable and maintainable</li>
+</ul>
+<h3 id="avoid-using-index-for-moduleattribute-identifcation">Avoid using Index for ModuleAttribute identifcation</h3>
+<p>Avoid Identifying a control by Index as minor changes in the SUT can lead to failed test cases. Instead, controls should be identified by properties or anchors. Use index only if you cannot choose other identification criteria to uniquely identify the control.</p>
+<p><img alt="naming modules 7" src="../images/naming-modules-req7.png" /></p>
+<h3 id="avoid-using-image-based-identification">Avoid using image-based identification</h3>
+<p>Image-based recognition should only be used as a last resource, as image-based automation is dependent on screen resolution, consistent appearance and non-variability of the control contents. Use it when there is no other option to steer the controls, mainly useful to steer the Maps.</p>
+<p><img alt="naming modules image-based identification" src="../images/naming-modules-image-based-identification.png" /></p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>test cases are more stable</li>
+<li>easier to maintain</li>
+<li>more readable </li>
+<li>can be used for distributed execution.</li>
+</ul>
+<h3 id="combine-module-attributes-in-control-groups-if-possible">Combine Module Attributes in control groups, if possible</h3>
+<p>Modules should be logically named for the screen each represents, or the control group on a screen if the control group appears in more than one screen instance.</p>
+<p><img alt="naming modules 8" src="../images/naming-modules-req8.png" /></p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>reduces errors</li>
+<li>increases readability</li>
+</ul>
+<h3 id="name-moduleattributes-appropriately">Name ModuleAttributes appropriately</h3>
+<p>Module Attributes should be named after the definition of the field on the screen. The Module Attribute’s name should be in a readable form and not just a technical definition.</p>
+<p><img alt="naming modules 9" src="../images/naming-modules-req9.png" /></p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Business-related names will help to identify the correct control in the Test Step</li>
+<li>Makes them easy to understand for business users.</li>
+</ul>
+<h3 id="make-use-of-cardinality">Make use of cardinality</h3>
+<p>When using a ModuleAttribute more than once in a TestStep, consider using the cardinality parameter. Cardinality allows you to use the same ModuleAttribute multiple times within a TestStep without having to copy it. Default cardinality is set to “0-1”. For multiple use, it must be set to “0-n”.</p>
+<p><img alt="naming modules - cardinality" src="../images/naming-modules-cardinality.png" /></p>
+<p><strong>Benefits:</strong></p>
+<p>Using cardinality increases readability and simplifies maintenance.</p>
+<h3 id="use-standard-modules-wherever-required">Use standard modules wherever required</h3>
+<p>Use standard modules wherever required. Standard modules will get imported by default while creating the workspace and this will avoid creating extra modules. We can use the standard modules like <em>openurl</em> to access the application and to close the application use TBox window operation module etc. which are available in the standard modules.</p>
+<p><strong>Benefits:</strong></p>
+<p>Using standard modules will avoid creating extra modules, making maintenance easier.</p>
+<h3 id="use-parameters">Use parameters</h3>
+<p>Both XModules and XModuleAttributes are defined by their default properties. In addition, they are also defined by using specific parameters. These params are relevant since they have an impact on the system's interaction with controls. 
+These configurations are created in the Properties tab. In Tosca we have Configuration, Identification, Steering and Transition parameters. The parameters used most are ScrollingBehaviour, WaitBefore, WaitAfter, ExplicitName, AvoidSnapper.</p>
+<p><img alt="naming modules - use parameters" src="../images/naming-modules-use-parameters.png" /></p>
+<p><strong>Benefits:</strong></p>
+<p>These parameters define which TBox components are used for steering controls and to specify the behaviour of a control.</p>
+<h2 id="structuring-test-cases">Structuring Test Cases</h2>
+<h3 id="test-case-folder-structure">Test Case Folder Structure</h3>
+<p>Within a Test case, use folders to separate logical sections. We recommend the following structure: <strong>Precondition</strong> for starting the SUT and preparing test data; <strong>Process</strong> for the actual test, and <strong>Postcondition</strong> to perform clean-ups and close the SUT. Within those folders, a folder structure should be used to group test steps.</p>
+<p>Keep the specific process test steps in a folder ex: Login process; we enter the credentials and press the login button, then verify the user logged in. Keep this in a folder so that it will be easy to identify.</p>
+<p><img alt="naming modules - folder structure" src="../images/naming-modules-folder-structure.png" /></p>
+<p><strong>Benefits:</strong></p>
+<p>When using this folder structure, the content is separated and easily readable, even when expanded. Also, it is easier to focus on the separate parts of the process.</p>
+<h3 id="test-case-verification-points">Test Case Verification Points</h3>
+<p>Every test case should have at least one verification point. This ensures that the functions of your SUT are verified to work, otherwise your test case would not have a defined outcome.</p>
+<p><img alt="test case - verification points" src="../images/test-case-verification-points.png" /></p>
+<p><strong>Benefits:</strong></p>
+<p>With a "Verify" value, you can ensure that the system under test is behaving as expected. Every test case needs a verification point, but Business test cases which may be used to perform actions that are needed for a subsequent test case might not need one. Make sure to therefore add verification points to test cases only where required.</p>
+<p><strong>Note</strong>: By adding verification points, Tosca will capture the Screenshots of the verification if we have enabled the DOKU Snapper in settings.</p>
+<h3 id="test-case-workstates">Test Case Workstates</h3>
+<p>Setting Workstates on test cases provide a good overview on the test case status. They help with the overview of the Requirements section. Each Workstate translates to a specific percentage of completion to the work of that section (i.e. PLANNED gives 20%, INWORK gives 50% and COMPLETED means 100%). This provides a good overview of the status of test cases, as well as which Requirements have been covered.</p>
+<p><img alt="test case - workstates" src="../images/test-case-workstates.png" /></p>
+<p><strong>Benefits:</strong></p>
+<ul>
+<li>Workstates make it easier to see the status of a test case in the test cases section and in the Requirements section, and makes it easy to check the state of the test case.</li>
+<li>By renaming test steps and Modules even a person not involved in the test case creation will be able to more easily understand the process being validated.</li>
+</ul>
+<h3 id="synchronization">Synchronization</h3>
+<p>During execution, Tosca and the AUT often require synchronization. Static waits using the Tbox Wait Module should be avoided. Instead, use the ActionMode “WaitOn”. WaitOn ensures that test execution is not prolonged unnecessarily, which impacts execution performance.</p>
+<p><strong>Note</strong>: By default, the synchronization for WaitOn will be 20000ms. This can be modified if needed. It’s often best to increase the time so that the test case is not erroneously failed.</p>
+<p><strong>Note</strong>: We can also use the Steering parameters of wait: 1. WaitBefore 2. WaitAfter.  This also help steer the application, even though it is static wait.</p>
+<p><img alt="test case - synchronization" src="../images/test-case-synchronization.png" /></p>
+<h3 id="avoid-keyboard-and-mouse-emulsion">Avoid keyboard and mouse emulsion</h3>
+<p>The <code>{SENDKEYS}</code> and <code>{CLICK}</code> commands should be avoided whenever possible. These commands emulate keyboard or mouse movements and are slow, less stable and can have a negative impact on unattended execution.  Instead, use “x” to execute the click event directly on the control or use direct steering in text boxes.</p>
+<p><img alt="test case - avoid keyboard and mouse emulsion" src="../images/test-case-avoid-keyboard-and-mouse-emulsion.png" /></p>
+<p><strong>Benefits:</strong></p>
+<p>Avoiding keyboard and mouse emulation increases speed and stability, and facilitates remote execution.  Direct steering can be also used if a computer is locked.</p>
+<h3 id="test-case-names">Test case names</h3>
+<p>Each test case should have a unique name within a project or component folder. Use the same name in the test design sheet to avoid confusion.</p>
+<p><img alt="test case - names" src="../images/test-case-names.png" /></p>
+<p><strong>Benefits:</strong></p>
+<p>Unique test case names increase readability, make searches easier and make reports more readable.</p>
+<h3 id="make-use-of-recovery-scenarios">Make use of recovery scenarios</h3>
+<p>Recovery scenarios help you with unexpected occurrences errors/issues while running test cases. Sometimes unexpected screens/popups etc. can make a test case fail. Creating Recovery Scenarios will help to deal with unexpected occurrences and then restart either the Test Case, TestStep or the TestStepValue after recovering to a SUT known state.</p>
+<p><strong>Note:</strong> you must previously anticipate an unexpected occurrence such as a screen/popup because Tosca must be instructed on how to deal with the situation should it arise. This is when Recovery Scenarios come into play. </p>
+<p><strong>Note:</strong> Recovery scenarios only work when executing test cases in an Execution List.</p>
+<p><img alt="test case - recovery scenarios" src="../images/test-case-recovery-scenarios.png" /></p>
+<p><strong>Benefit:</strong></p>
+<p>Recovery scenarios ensure that your test cases do not encounter an error which may stop your entire Test Set from running due to unexpected issues like popups, cookie notifications, or other unexpected conditions.</p>
+<h3 id="implement-clean-up-scenarios">Implement clean-up scenarios</h3>
+<p>Clean-up scenarios will help you to reset your SUT to a known state when a test case fails. They ensure that you can run subsequent test cases. Without the, it can be problematic to run multiple test cases in a row.  Clean-up scenarios ensure that you can get back to the base state for the next test case by ‘cleaning up’ after an unexpected condition. </p>
+<p><strong>Note:</strong> Clean-up scenarios only work when executing test cases in an Execution List.</p>
+<p><img alt="test case - clean-up scenarios" src="../images/test-case-clean-up-scenarios.png" /></p>
+<p><strong>Benefits:</strong></p>
+<p>Clean-up scenarios help you to make sure that when a test case fails you can start the next one without any manual intervention. This is especially necessary for unattended execution wherein we need to ensure that a failure of 1 test case does not affect the remaining test cases.</p>
+<h3 id="recovery-scenario-retry-level">Recovery Scenario Retry Level</h3>
+<p>Make sure that your Recovery scenarios restart on the correct RetryLevel. By default, it will be on the test case level which means that after the Recovery scenario the entire test case will restart. This is not always what you want or is not even always possible. Setting the correct RetryLevel will ensure that the test case does not run into other issues.</p>
+<p><img alt="test case - recovery scenario retry level" src="../images/test-case-recovery-scenario-retry-level.png" /></p>
+<p><strong>Benefits:</strong></p>
+<p>If a test case restarts on the correct level, it is possible to run your test cases correctly even when faced with unexpected issues.</p>
+<h3 id="create-test-step-blocks-based-on-reusability">Create Test Step Blocks Based on Reusability</h3>
+<p>Make use of Reusable TestStepBlocks when creating new test cases. </p>
+<p><strong>Note:</strong> Reusable TestStepBlocks should only be created if they are intended to be reused, as they would otherwise clutter the repository.</p>
+<p><strong>Benefits:</strong></p>
+<p>Reusable TestStepBlocks help to save time and effort as created reusable blocks can be easily re-used in the entire project.</p>
+<h3 id="test-configuration-parameters">Test Configuration Parameters</h3>
+<p>Use Test Configuration Parameters to set overall variables, such as setting a web browser URL. This is done so that everybody working on the project uses the same variables when testing the same test cases. Values that change between test cases should be part of the TestSheet.</p>
+<p><strong>Note:</strong> The syntax to use the Test configuration parameters is <code>{CP[test configuration parameter name]}</code></p>
+<p><img alt="test case - Test Configuration Parameters" src="../images/test-case-test-configuration-parameters.png" /></p>
+<p><strong>Benefits:</strong></p>
+<p>Using Test Configuration Parameters ensures that values can be managed from a centralized point, rather than changing them in each step, creating higher maintenance. This method ensures that everyone working on the project is using the same variables for test scripts.</p>
+<h3 id="execution-lists-logs-and-scratch-book">Execution Lists -Logs and scratch Book</h3>
+<p>Every test case that is ready to execute needs to be in an Execution List. Execution Lists will generate logs during execution of test cases and makes it possible to run multiple test cases in a row without manual intervention. </p>
+<p>During test case development/creation, test cases can be debugged in Scratchbook. Once completed, drag the into an Execution List for execution.</p>
+<p><img alt="test case - Execution Lists -Logs and scratch Book" src="../images/test-case-Execution-Lists-Logs-and-scratch-Book.png" /></p>
+<p><strong>Benefits:</strong></p>
+<p>When test cases are run in a Execution List, the history of prior runs is available, allowing for recovery and clean-up scenarios to be kicked in.</p>
+<h2 id="multi-user-workspaces">Multi-User Workspaces</h2>
+<h3 id="separate-login-credentials-for-each-user">Separate Login Credentials for Each User</h3>
+<p>When you work together in a repository it is wise to create login credentials for everyone separately, so you do not get access conflicts even if there are enough licenses. It will also help you to see who has something checked out or who adjusted something last.  </p>
+<p><img alt="Separate Login Credentials for Each User" src="../images/multi-user-workspaces-separate-login-credentials.png" /></p>
+<p><strong>Benefits:</strong></p>
+<p>Separate login credentials in a common repository reduce access conflicts and you can ask someone to check something in when you need it. Also, you can see who updated an artifact.</p>
+<h3 id="separate-regular-users-and-administrators-in-a-common-repository">Separate regular users and administrators in a common repository</h3>
+<p>By separating the kind of users, you can make sure that the right people are able to set access rights, add users, disable users and create or delete user groups. With these rights you can decide who is able to see what and/or can adjust something. It is important to not only have one administrator but also to not make everyone an administrator.</p>
+<p><img alt="Separate regular users and administrators in a common repository - wrong" src="../images/multi-user-workspaces-Separate-regular-users-and-administrators-in-a-common-repository-wrong.png" /></p>
+<p><img alt="Separate regular users and administrators in a common repository - right" src="../images/multi-user-workspaces-Separate-regular-users-and-administrators-in-a-common-repository-right.png" /></p>
+<p><strong>Benefits:</strong></p>
+<p>Separating users will help you to set correct rights for users and make sure that it is not possible for everyone to do this.</p>
+<h3 id="use-a-buffer-only-within-one-test-case">Use a buffer only within one test case</h3>
+<p>Setting, adjusting and using a buffer within one Test Case ensures that data is not used from different Test Cases. Buffers are set on the device where you run the Test Case on. Therefore, using a buffer that was set on a previous Test Case might create potential problems as this is not set on the machine executing your current Test Case. There might also be a problem with old data, if the Test Case has not been run in a while. By setting, adjusting and using the buffer only in one Test Case you make sure that the data is always up to date and the buffer is always created and available.</p>
+<p>Tbox Delete Buffer can be used to delete a buffer and the value associated with the buffer.</p>
+<p><img alt="Use a buffer only within one test case" src="../images/multi-user-workspaces-Use-a-buffer-only-within-one-test-case.png" /></p>
+<p><strong>Benefits:</strong></p>
+<p>Using a buffer only within one Test Case ensures that you are using data that is up to date and not from another Test Case. </p>
+<h3 id="store-shared-settings-in-the-project-settings">Store shared settings in the project settings</h3>
+<p>Using project settings instead of workspace settings ensures that everyone (including Agents) has the same settings. This eliminates problems that could stem from different synchronization times, different extension locations, or other settings. These settings are saved in the common repository, so everybody is up to date as soon as they press the update all button.</p>
+<p><img alt="Store shared settings in the project settings" src="../images/multi-user-workspaces-Store-shared-settings-in-the-project-settings.png" /></p>
+<p><strong>Benefits:</strong></p>
+<p>Storing shared settings in the project settings makes sure that everyone is using the same settings, thus eliminating different sources of errors.</p>
+<h2 id="useful-links">Useful Links</h2>
+<ul>
+<li><a href="https://documentation.tricentis.com/tosca/1600/en/content/tosca_commander/appendix.htm">Keyboard Shortcuts</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Equinor
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "toc.integrate", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1059 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://sap.equinor.com/qa/manual/guidelines/">
+      
+      
+        <link rel="prev" href="../getting-started/">
+      
+      
+        <link rel="next" href="../qtest-best-practices/">
+      
+      
+      <link rel="icon" href="../../../stylesheets/Equinor_Symbol_Favicon_RED_32x32px.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Guidelines - Quality Assurace</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#qtest-guideline" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Quality Assurace" class="md-header__button md-logo" aria-label="Quality Assurace" data-md-component="logo">
+      
+  <img src="../../../stylesheets/Equinor_Symbol_Favicon_RED_64x64px.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Quality Assurace
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Guidelines
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/equinor/btp-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    equinor/btp-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../overview/" class="md-tabs__link">
+          
+  
+  Quality Assurance
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../getting-started/" class="md-tabs__link">
+          
+  
+  Manual Testing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../automation/getting-started/" class="md-tabs__link">
+          
+  
+  Test Automation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../projects/project-overview/" class="md-tabs__link">
+          
+  
+  Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Quality Assurace" class="md-nav__button md-logo" aria-label="Quality Assurace" data-md-component="logo">
+      
+  <img src="../../../stylesheets/Equinor_Symbol_Favicon_RED_64x64px.png" alt="logo">
+
+    </a>
+    Quality Assurace
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/equinor/btp-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    equinor/btp-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Quality Assurance
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Quality Assurance
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Manual Testing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Manual Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Guidelines
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Guidelines
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-jira-user-story-in-accordance-to-qtest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Jira User Story In Accordance to qTest
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-test-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Test Case
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-test-case-from-a-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Test Case from a Session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Runs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#executing-test-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executing Test Runs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reporting-defects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reporting Defects
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qtest-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../qtest-training-session/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    qTest Training Session Video
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Test Automation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Test Automation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../automation/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../automation/guidelines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guidelines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../automation/tosca-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/project-overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../projects/nextgen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NextGen ERP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/equinor/btp-docs/edit/master/docs/qa/manual/guidelines.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="qtest-guideline">qTest Guideline</h1>
+<h2 id="creating-a-jira-user-story-in-accordance-to-qtest">Creating a Jira User Story In Accordance to qTest</h2>
+<p>When creating an User Story (US) in Jira some fields must be configured in order to prepare it to be used later in qTest. </p>
+<ul>
+<li><strong>Project:</strong> NextGen (NGE)</li>
+<li><strong>Issue Type:</strong> Story</li>
+<li><strong>Story Type:</strong> only Configuration and Development types should be considered for testing as a general rule. As Spike US's deliver knowledge and Enabler US's deliver value to a user or the outcome of a sprint they are not expected to result in verifiable software changes.</li>
+<li><strong>Linked Issues:</strong> choose <code>Implements</code> and find the requirement you are testing against.</li>
+<li><strong>Charm ID:</strong> find the 10-digits Charm ID you are testing against on Solution Manager.</li>
+<li><strong>Functional Test Required:</strong> <strong><code>Yes</code></strong>. Be selective on which user stories are being marked with <code>Yes</code>. The following should be avoided:</li>
+<li>Enabler US's;</li>
+<li>User Stories that will not have test case developed in the current sprint. Create another US linked to the current one where the test cases will be developed;</li>
+<li>User Stories with only unit testing;</li>
+</ul>
+<p>You can see the chosen details on the new User Story. Notice also that there are two subtasks, one for creating and another for executing test cases related to this US. </p>
+<p><img alt="qtest guideline - new user story" src="../images/qtest-guideline-new-user-story.png" /></p>
+<h2 id="creating-a-test-case">Creating a Test Case</h2>
+<p>You find qTest <a href="https://equinor.qtestnet.com/portal/loginform?redirect=https%3A%2F%2Fequinor.qtestnet.com%2Fp%2F120469%2Fportal%2Fproject%23tab%3Dtestexecution%26object%3D2%26id%3D6233891">here</a>. Use the Equinor ID to perform login.</p>
+<p><img alt="qtest guideline - login" src="../images/qtest-guideline-login.png" /></p>
+<p>At the left side you can select the project to work on. Please choose "Equinor SAP - BPML".</p>
+<p>Once logged in you have four main tabs on top of the portal:</p>
+<ul>
+<li><strong>Test Plan</strong>: Not relevant for test developers. Reserved for PO's and QA SME's</li>
+<li><strong>Requirements</strong>: where we create new test cases based on requirements</li>
+<li><strong>Test Design</strong>: add properties and details to test cases</li>
+<li><strong>Test Execution</strong>: List of created test runs</li>
+</ul>
+<p><img alt="qtest guideline - home page" src="../images/qtest-guideline-home-page.png" /></p>
+<p>We then open <code>Requirements</code> tab to start a new test case. In this page it is worth noticing:
+1. the BPML structure with the requirements added to Jira
+2. test cases already linked to the selected requirement
+3. area to create a new test case</p>
+<p><img alt="qtest guideline - requirements" src="./images/qtest-guideline-requirements.png" /></p>
+<p>Once the new test case is created it is added to the test cases area. </p>
+<p><img alt="qtest guideline - requirement added" src="../images/qtest-guideline-requirement-added.png" /></p>
+<p>By clicking on the new test case you are transferred to the <code>Test Design</code> tab. This is where we write a test case. It has two main parts:</p>
+<ol>
+<li><strong>Properties</strong>: the following may be configured.</li>
+<li>Status: starts as <code>New</code>.</li>
+<li>Type: manual, automation, security.</li>
+<li>Owner (component/team): the team responsible for this test case.</li>
+<li>Assigned To: test developer (or Product Owner when under approval).</li>
+<li>Automation Priority: low/medium/high.</li>
+<li>Automation Status: not started/in progress/completed.</li>
+<li>Version: automatically set up and updated. Round numbers indicate versions available for production.</li>
+<li><strong>Test Steps</strong>: a test case must contain steps where the tester performs actions against the SUT. For each step:</li>
+<li>Step #: automatically generated</li>
+<li>Step Description: description of the action conducted by the tester. Here the test developer should use parameters from <a href="https://parameter-6.qtestnet.com/#/parameters">qTest Manager | Parameters</a> instead of writing static values to parameters</li>
+<li>Expected result: short description of the expected behavior of the SUT</li>
+<li>End-user role: SAP role </li>
+<li>Executable: script executed during step</li>
+<li>Attachment (paper clip icon)</li>
+<li>Action: control actions to be performed in the step such as moving it up or down in the test case</li>
+<li>The test case under the BPML structure. Notice that the icon has only orange details. This means that it's last <code>Status</code> is not approved.</li>
+</ol>
+<p>Other tabs besides Test Steps include Requirements, Sessions, Attachments, History and Comments.</p>
+<p><img alt="qtest guideline - test design" src="../images/qtest-guideline-test-design.png" /></p>
+<p>When working on a test case, a test case developer should:
+- set <code>Assigned To</code> to himself;
+- set <code>Status</code> to <code>in progress</code>;
+- choose <code>Type</code>, <code>Owner</code>, <code>Automation Priority</code> and <code>Automation Status</code> (the two last ones only for automation);
+- add a description of the test case;
+- add test steps. Remember to use add parameters by using <code>@&lt;parameter name&gt;</code>. Once you type <code>@</code> and any letter you should see the available parameters.
+- once the test case is ready to be reviewed:
+  - change <code>Status</code> to <code>Ready for Approval</code>
+  - change <code>Assigned to</code> for the quality SME responsible for your team
+  - click <code>Save</code></p>
+<p>The <code>Version</code> is automatically updated with one number after the decimal up. IF the quality SME approves the test case the <code>Version</code> is rounded up to the next full number (e.g. if <code>Version</code> is 0.3 and the quality SME approves it, <code>Version</code> becomes 1.0). Also the icon for the test case now has one green check, indicating that its last status is approved.</p>
+<p><img alt="qtest guideline - approved test case" src="../images/qtest-guideline-approved-test-case.png" /></p>
+<h2 id="creating-a-test-case-from-a-session">Creating a Test Case from a Session</h2>
+<p>This alternative to create a test case allows the test case developer to run a session on qTestExplorer Integrated, record the usage of the tool to be tested just like in the expected test case, and then generate a test case from it, with test steps and annexed screenshots.</p>
+<p>To start a new session, find the icon for qTest Explorer in your applications tray and click on it.</p>
+<ul>
+<li>if you must install qTest Explorer yet, refer to the <a href="https://sap.equinor.com/qa/manual/getting-started/#installation-qtest-explorer-applies-to-those-without-an-equinor-laptop">installation of qTest Explorer</a>.</li>
+</ul>
+<p><img alt="qTestExplorer Integrated Icon" src="../images/qtestexplorer-integrated-icon.png" /></p>
+<p><strong>NOTE</strong>: if your qTest Explorer logo is shown in gray color it means it has not logged in yet. The easiest way to log in is to find a test case in qTest under Test Execution and run with Desktop Explorer. Once the Desktop Explorer opens you may cancel the run and try with the button on the applications tray again.</p>
+<p><img alt="Run with Desktop Explorer to Log In" src="../images/qtestexplorer-integrated-desktop-explorer.png" /></p>
+<p>Once qTest Explorer pane opens, update the following fields:</p>
+<ul>
+<li>Project: use "NextGen ERP".</li>
+<li>Title: add a title using the naming convention in <a href="https://sap.equinor.com/qa/manual/qtest-best-practices/">qTest Best Practices</a>.</li>
+<li>Applications: choose the applications you intend to test.</li>
+</ul>
+<p>Click on Start. The current pane closes and a smaller one with the execution time is displayed. Remember that the control buttons appear only when you hover the mouse over the timer.</p>
+<p>For each step in your execution ideally it should be added a note in order to be easier to understand the step later on. This is to avoid having steps where the description only says unclear descriptions, such as "click here".</p>
+<p><img alt="Start Session" src="../images/qtestexplorer-integrated-start-session.png" /></p>
+<p>Use the applications as you need for your scenario. Once you are done, click on the Stop button in the pane. Another pane opens asking you to either accept the execution or edit it. Choose Edit, qTest then shows a list with the recorded actions. You can eventually add better descriptions and remove unnecessary steps.</p>
+<p><img alt="Edit Done Session" src="../images/qtestexplorer-integrated-edit-done-session.png" /></p>
+<p>Once you are finished, click on the button on top right corner to save the session.</p>
+<p><img alt="Save Session" src="../images/qtestexplorer-integrated-save-session.png" /></p>
+<p>The browser then opens with the same list of steps. Click on "Submit Test Case".</p>
+<p><img alt="Submit Test Case" src="../images/qtestexplorer-integrated-submit-test-case.png" /></p>
+<p>You are presented a preview of the test case. You can either group all actions of a screen as a single step or have them as separate steps. This is optional. Finally, click on Submit.</p>
+<p><img alt="Edit Before Submit" src="../images/qtestexplorer-integrated-edit-before-submit.png" /></p>
+<p>A new test case is created under no specific BPML in the hierarchy. </p>
+<p><img alt="Test Case Done" src="../images/qtestexplorer-integrated-test-case-done.png" /></p>
+<p>After the test case is created, remember to do the following yet:</p>
+<ul>
+<li>Drag it to the correct BPML. </li>
+<li>Go under the Requirements tab and add the correct requirement.</li>
+<li>Add Expected Result, End User Role and Executable for each step.</li>
+<li>change Status and Assigned To accordingly.</li>
+<li>if you are running the session already on the Quality environment and you need to run the test case only once (you don't have multiple variations of the test case with different parameter values or datasets) you may mark the subtest "Execute Test Cases" to Done.</li>
+</ul>
+<h2 id="creating-runs">Creating Runs</h2>
+<p>You may create a new test run from the Test Design view by cliding on <code>Create Test Run</code>. A pop-up opens and you should then choose the test suite where the test run will be created. If you cannot find a suitable test suite for the test case click on <code>Test Execution</code>, find the test cycle where you expect the test suite to be, right-click on it and choose <code>Create Test Suite</code>.</p>
+<p><img alt="qtest guideline - pick test suite" src="../images/qtest-guideline-pick-test-suite.png" /></p>
+<p>After choosing the test suite a new pop-up is displayed, where you can create several test runs for this test case. The following fields are relevant:
+- <code>Create Run Data</code>: 
+  - <code>Manually</code>: the test developer adds values from drop-down menus for each configured parameter
+  - <code>Randomize Data</code>: qTest will pick available parameter values randomly
+  - <code>From Dataset</code>: uses a pre-added dataset as source
+- Assign parameter values to each Test Run: add as many test runs as necessary for each test case and vary the parameter values to create coverage for your tests</p>
+<p><img alt="qtest guideline - create test runs" src="../images/qtest-guideline-create-test-runs.png" /></p>
+<p>Once created the new test runs will be visible under Test Execution.</p>
+<p><img alt="qtest guideline - test execution" src="../images/qtest-guideline-test-execution.png" /></p>
+<h2 id="executing-test-runs">Executing Test Runs</h2>
+<p>To execute a test run click on <code>Run -&gt; Testpad + Desktop Explorer</code>.</p>
+<p><img alt="qtest guideline - run testpad" src="../images/qtest-guideline-run-testpad.png" /></p>
+<p>Two pop-up windows appear. The first one contains the test steps from the chosen test case. The tester can use it to update the progress of a test run, and mark test runs as success or failure. </p>
+<p>The second pop-up is the <code>start session</code> screen for qTest Desktop Explorer. The user can select which applications are being recorded during the test execution (use <code>desktop</code> if you are taking action on not only SAP but Fiori or another application during the test execution) and the record mode (with <code>Auto</code> qTest takes screenshots automatically; <code>Manual</code> for cases where the tester will decide when to take screenshots; <code>Time Interval</code> and qTest takes screenshots at predefined intervals). </p>
+<p><img alt="qtest guideline - start session" src="../images/qtest-guideline-start-session.png" /></p>
+<p>In <code>Start Session</code> after clicking on <code>Start</code> the test run starts and another pane is shown. This pane contains a timer for the running test and some buttons for actions:</p>
+<ul>
+<li>stop test</li>
+<li>force screenshot: can be used even in tests marked with record mode <code>Auto</code></li>
+<li>media: record audio or videos during a test run</li>
+<li>notes: useful to take notes during a test execution in case some important information should be available at a specific test case execution</li>
+<li>show/switch time type: not relevant</li>
+<li>pause test: if during a test execution the tester must use the computer for something else e.g. read emails he can pause the test, do other actions and after he is done resume execution</li>
+</ul>
+<p><img alt="qtest guideline - desktop explorer pane" src="../images/qtest-guideline-desktop-explorer-pane.png" /></p>
+<p>Testers should update the status of each test step as they execute a test run.</p>
+<p><img alt="qtest guideline - update test steps" src="../images/qtest-guideline-update-test-steps.png" /></p>
+<p>After the tester clicks on <code>stop test</code> he is prompted whether to complete session or edit session. We recommend editing the session right after running it so that the tester goes through all recorded actions and screenshots and deletes the ones he deems unnecessary. </p>
+<p>Once done the tester should click on <code>Complete Session</code> (top-right corner). In the test steps pane the tester will set status for the test run and save. This in time will update the status of the test run under <code>Test Execution</code>. </p>
+<h2 id="reporting-defects">Reporting Defects</h2>
+<p>In the case of a test case run that results in a defect being found the tester must report it. The easiest way to do it is from the test steps pane, where he clicks on the defect button on the step where he noticed it.</p>
+<p><img alt="qtest guideline - new defect button" src="../images/qtest-guideline-new-defect-button.png" /></p>
+<p>He should select the choices <code>include all test step details</code> and <code>include test execution details in defect's comments</code>, then click on <code>new</code> and <code>add</code>. The tester is then redirected to Jira where he must create a new <code>Defect</code> issue.</p>
+<p>Notice in the <code>Description</code> field that the test steps have been added here. The tester should add comments at this point under the step where the defect has been discovered to describe what was found. It is recommended to use "expected" and "result" format to describe the finding.</p>
+<p>The following fields must be filled up in the Jira defect:</p>
+<ul>
+<li><strong>Linked issues</strong>: <code>blocks</code> and the requirement the test case is linked to</li>
+<li><strong>Defect Category (mandatory)</strong></li>
+</ul>
+<p>After saving the defect, the requirement it has been linked to will have a reference to the defect.</p>
+<p>The two subtasks which had been created when creating the User Story can be updated. The one for creating a test case can be set to <code>Done</code>. The one for executing the test case will depend on the result of the test case execution. Test cases with pending defects should not be marked as <code>Done</code>, but can rather be changed to <code>Realize</code>, which means that it is in progress.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Equinor
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "toc.integrate", "content.action.edit"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>

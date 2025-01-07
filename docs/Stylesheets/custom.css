@@ -1,0 +1,53 @@
+.badge.recommended .value {
+    background-color: #107e3e;
+    color: beige;
+}
+
+.badge.careful .value {
+    background-color: #e9730c;
+    color: beige;
+}
+
+.badge.avoid .value {
+    background-color: #bb0000;
+    color: beige;
+}
+
+.recommended-label {
+    color: beige;
+    background-color: #107e3e;
+    border-radius:4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.careful-label {
+    color: beige;
+    background-color:#e9730c;
+    border-radius:4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.avoid-label {
+    color: beige;
+    background-color: #bb0000;
+    border-radius:4px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.md-typeset .badge {
+    line-height: 0.5;
+    font-size: 0.7rem;
+}
+
+/* Make admonitions same font size as other text */
+.md-typeset .admonition, .md-typeset details {
+    font-size: 0.8rem;

@@ -1,0 +1,87 @@
+site_name: Quality Assurance
+site_url: https://sap.equinor.com/
+
+# Repository, edit to point to appropriate repo
+# repo_name: 'equinor/btp-docs'
+# repo_url:  'https://github.com/equinor/btp-docs'
+# edit_uri:  'edit/master/docs/'
+
+# Copyright, do not edit
+copyright: 'Copyright &copy; 2022 Equinor'
+
+# Configuration, do not edit
+use_directory_urls: true
+theme:
+  name: 'material'
+  language: 'en'
+  palette:
+    primary: 'grey'
+    accent: 'pink'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  features:
+    - navigation.tabs
+    - toc.integrate
+    - content.action.edit
+    - content.icons  # Habilita soporte para íconos Font Awesome
+  logo: stylesheets/Equinor_Symbol_Favicon_RED_64x64px.png
+  favicon: stylesheets/Equinor_Symbol_Favicon_RED_32x32px.png
+
+extra_css:
+  - 'stylesheets/extra.css'
+  - 'stylesheets/custom.css'
+
+# To support PyMdown
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+
+# Extensions, do not edit
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: false
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true 
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - meta
+
+nav:
+
+  - Quality Assurance:
+      - Introduction: qa/overview.md
+  - Manual Testing:
+      - Getting started: qa/manual/getting-started.md
+      - Guidelines: qa/manual/guidelines.md
+      - Best practices: qa/manual/qtest-best-practices.md
+      - qTest Training Session Video: qa/manual/qtest-training-session.md
+  - Test Automation:
+      - Getting started: qa/automation/getting-started.md
+      - Guidelines: qa/automation/guidelines.md
+      - Best practices: qa/automation/tosca-best-practices.md
+  - Projects:
+      - Projects: qa/projects/project-overview.md
+      - NextGen ERP: qa/projects/nextgen.md
