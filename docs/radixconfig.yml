@@ -17,7 +17,7 @@ spec:
   environments:
   - name: prod
     build:
-      from: master
+      from: main
   - name: qa
     build:
       from: feat*      
