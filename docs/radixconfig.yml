@@ -1,0 +1,46 @@
+apiVersion: radix.equinor.com/v1
+kind: RadixApplication
+
+metadata:
+  name: btp-docs
+
+spec:
+  dnsExternalAlias:
+    - alias: sap.equinor.com
+      environment: prod
+      component: docs
+      useCertificateAutomation: true
+    - alias: sapdev.equinor.com
+      environment: prod
+      component: docs
+      useCertificateAutomation: true
+  environments:
+  - name: prod
+    build:
+      from: master
+  - name: qa
+    build:
+      from: feat*      
+  components:
+  - name: docs
+    src: "."
+    ports:
+      - name: http
+        port: 8080
+    publicPort: http
+    authentication:
+      oauth2:
+        clientId: 177cd128-8a31-40e4-8965-b310b009fd6d
+        scope: openid profile email offline_access
+        setXAuthRequestHeaders: true
+        setAuthorizationHeader: true
+        sessionStoreType: redis
+        redisStore:
+          connectionUrl: redis://redis:6379
+  - name: redis
+    image: bitnami/redis:latest
+    secrets:
+      - REDIS_PASSWORD
+    ports:
+      - name: redis
+        port: 6379
