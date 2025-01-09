@@ -2,7 +2,7 @@ apiVersion: radix.equinor.com/v1
 kind: RadixApplication
 
 metadata:
-  name: quality-assurance
+  name: QA-Guidelines
 
 spec:
   dnsExternalAlias:
@@ -37,3 +37,10 @@ spec:
       ports:
         - name: redis
           port: 6379
+    - name: web
+      version: 1.0
+      services:
+        web:
+          image: my-docker-image
+          ports:
+            - 8080
