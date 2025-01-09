@@ -7,20 +7,13 @@ metadata:
 spec:
   dnsExternalAlias:
     - alias: sap.equinor.com
-      environment: prod
-      component: docs
-      useCertificateAutomation: true
-    - alias: sapdev.equinor.com
-      environment: prod
+      environment: pre-prod    
       component: docs
       useCertificateAutomation: true
   environments:
     - name: pre-prod
       build:
-        from: main   
-    - name: qa
-      build:
-        from: main   
+        from: main    
   components:
     - name: docs
       src: "."
